@@ -24,10 +24,10 @@ class Books
     private ?\DateTimeInterface $date_edition = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_add = null;
+    private ?\DateTimeInterface $created_at = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date_update = null;
+    private ?\DateTimeInterface $update_at = null;
 
     public function getId(): ?int
     {
@@ -70,26 +70,26 @@ class Books
         return $this;
     }
 
-    public function getDateAdd(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->date_add;
+        return $this->created_at;
     }
 
-    public function setDateAdd(\DateTimeInterface $date_add): static
+    public function setCreatedAt(\DateTimeInterface $created_at): static
     {
-        $this->date_add = $date_add;
+        $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getDateUpdate(): ?\DateTimeInterface
+    public function getUpdateAt(): ?\DateTimeInterface
     {
-        return $this->date_update;
+        return $this->update_at;
     }
 
-    public function setDateUpdate(?\DateTimeInterface $date_update): static
+    public function setUpdateAt(?\DateTimeInterface $update_at): static
     {
-        $this->date_update = $date_update;
+        $this->update_at = $update_at;
 
         return $this;
     }

@@ -6,6 +6,14 @@
     
   <div class="content">
     {{ form(form) }}
+
+    {# {{ form_start(form) }}
+    {{ form_row(form.title, {'attr': {'placeholder': "Titre du livre"}}) }}
+    {{ form_row(form.author, {'attr': {'placeholder': "Auteur du livre"}}) }}
+    {{ form_row(form.dateEdition) }}
+    {{ form_end(form) }} #}
+
+    {# <button type="submit" class="buttun">Ajouter un livre</button> #}
   </div>
 
 </main>

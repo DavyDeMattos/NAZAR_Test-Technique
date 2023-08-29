@@ -15,7 +15,7 @@ class BooksFixtures extends Fixture
             $book->setTitle("Titre du livre n°$i")
                 ->setAuthor("Auteur du livre n°$i")
                 ->setDateEdition(new \DateTime())
-                ->setDateAdd(new \DateTime());
+                ->setCreatedAt(new \DateTime());
             $manager->persist($book);
         }
         $manager->flush();

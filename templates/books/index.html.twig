@@ -25,7 +25,7 @@
       {% for book in books %}
       <tr>
         <td colspan="1">
-          <a href="#">{{ book.title }}</a>
+          <a href="{{ path('app_book_show', { id: book.id })}}">{{ book.title }}</a>
         </td>
         <td colspan="1">
           <a href="#">{{ book.author }}</a>
@@ -33,7 +33,7 @@
         <th colspan="1">
           <a href="#">{{book.dateEdition | date('d/m/Y')}}</a>
         </th>
-        <th colspan="1">{{ book.dateUpdate | date('d/m/Y')}}</th>
+        <th colspan="1">{{ book.updateAt | date('d/m/Y')}}</th>
         <td>
           <a href="#">
             <div class="delete"><i class="fa-sharp fa-solid fa-trash"></i></div

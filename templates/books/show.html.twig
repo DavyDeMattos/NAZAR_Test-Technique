@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voici le livre demandé{% endblock %}
+
+{% block body %}
+
+<div class="container--form">
+
+  <article>
+    <h2>{{book.title}}</h2>
+    <h3 class="author">{{book.author}}</h3>
+    <div>Livre édité le {{book.dateEdition | date('d/m/Y')}}</div>
+    <div class="content">
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur voluptatem iusto, ex nihil, voluptas corrupti repellat sed temporibus, molestiae ipsum fugiat consectetur natus labore totam eum. Harum, dignissimos. Nulla, natus?
+      </p>
+    </div>
+  </article>
+</div>
+  
+{% endblock %}

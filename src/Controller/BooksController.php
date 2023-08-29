@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Books;
-use App\Form\AddBookForm;
+use App\Form\BookType;
 use App\Repository\BooksRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,22 +34,44 @@ class BooksController extends AbstractController
     #[Route('/books/add', name: 'app_books_add')]
     public function add(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $book = new Books;
+        $book = new Books();
+        
 
-        $form = $this->createForm(AddBookForm::class, $book);
+        $form = $this->createForm(BookType::class, $book);
 
         $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $book->setCreatedAt(new \DateTime());
 
-        if (!$form->isSubmitted() || !$form->isValid()) {
-            return $this->render('books/createBook.html.twig', [
-                'form' => $form->createView(),
-            ]);
-        }
-        $book = $form->getData();
+            $entityManager->persist($book);
+            $entityManager->flush();
 
-        $entityManager->persist($book);
-        $entityManager->flush();
+            return $this->redirectToRoute('app_book_show', ['id' => $book->getId()]);
 
-        return $this->redirectToRoute('app_books_index');
+        };
+        return $this->render('books/createBook.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
+    }
+
+    /**
+     * Fonction qui permet d'afficher les information d'un livre
+     *
+     * 
+     * @return void
+     */
+    #[Route('/book/{id}', name: 'app_book_show')]
+    // Ici grâce au ParamConverter, pas besoin de faire appel au repo avec l'id en paramètre
+    public function show(Books $book){
+
+        // $repo = $this->getDoctrine()->getRepository(Books::class);
+        // $book = $booksRepository->find($id);
+        // $book = $repo->find($id);
+
+        return $this->render('books/show.html.twig', [
+            'book' => $book,
+        ]);
     }
 }
