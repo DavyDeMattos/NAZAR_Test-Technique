@@ -1,4 +1,65 @@
+html{
+  width: 100%;
+  height: 100%;
+}
 
 body{
+  background-color: #CCC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: auto;
+}
+
+nav.menu{
   background-color: #fff;
+  position: absolute;
+  padding: 2rem;
+  font-size: 2rem;
+  width: 100%;
+  left: -5px;
+  top: -5px;
+}
+
+main{
+  background-color: #fff;
+  position: relative;
+  width: 95%;
+  top: 5rem;
+}
+
+.container{
+  text-align: left;
+  padding: 0 15%;
+}
+
+.container h1, .container h2{
+  text-align: center;
+}
+
+
+ /* Listes des livres--------------------  */
+
+table{
+  width: 100%;
+}
+tbody>tr th{
+  width: 100%;
+  text-align: center;
+}
+tr{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.delete{
+  left: 1.5rem;
+  position: relative;
+}
+
+.edit{
+  right: 1.5rem;
+  position: relative;
 }

@@ -32,9 +32,12 @@ class BooksController extends AbstractController
      * @return Response
      */
     #[Route('/books/add', name: 'app_books_add')]
-    public function add(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/books/{id}/edit', name: 'app_books_edit')]
+    public function form(Books $book=null, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $book = new Books();
+        if(!$book){
+            $book = new Books();
+        }
         
 
         $form = $this->createForm(BookType::class, $book);
@@ -42,7 +45,11 @@ class BooksController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            $book->setCreatedAt(new \DateTime());
+            if(!$book->getId()){
+                $book->setCreatedAt(new \DateTime());
+            }else{
+                $book->setUpdateAt(new \DateTime());
+            }
 
             $entityManager->persist($book);
             $entityManager->flush();
@@ -52,8 +59,22 @@ class BooksController extends AbstractController
         };
         return $this->render('books/createBook.html.twig', [
             'form' => $form->createView(),
+            // Bouléen, si ($book->getId() !== null) alors il existe, et EditMode sera true
+            'editMode' => $book->getId() !== null
         ]);
 
+    }
+
+    /**
+     * Book delete
+     */
+    #[Route('/book/delete/{id}', name: 'app_book_delete')]
+    public function delete(Books $book, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($book);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_books_index');
     }
 
     /**

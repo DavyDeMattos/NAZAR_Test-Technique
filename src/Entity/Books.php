@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BooksRepository;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraint as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BooksRepository::class)]

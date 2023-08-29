@@ -1,20 +1,16 @@
 {% extends 'base.html.twig' %} 
 {% block title %}Ajout d'un livre{%endblock %} 
 {% block body %}
-<main>
   <h2>Ajout d'un livre</h2>
     
-  <div class="content">
+  <div class="container">
     {{ form(form) }}
-
-    {# {{ form_start(form) }}
-    {{ form_row(form.title, {'attr': {'placeholder': "Titre du livre"}}) }}
-    {{ form_row(form.author, {'attr': {'placeholder': "Auteur du livre"}}) }}
-    {{ form_row(form.dateEdition) }}
-    {{ form_end(form) }} #}
-
-    {# <button type="submit" class="buttun">Ajouter un livre</button> #}
+    <button type="submit" class="buttun">
+      {% if editMode %}
+        Enregistrer les modifications
+      {% else %}
+        Ajouter un livre
+      {% endif %}
+    </button>
   </div>
-
-</main>
 {% endblock %}

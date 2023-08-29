@@ -4,53 +4,39 @@
 
 {% block body %}
 
-<div class="container--form">
-    <h2>Liste des livres</h2>
+<div class="container">
+  <h2>Liste des livres</h2>
+  <table>
+    <tr>
+      <th colspan="1">Titre</th>
+      <th colspan="1">Auteur</th>
+      <th colspan="1">Date d'édition</th>
+      <th colspan="1">Dernière modification</th>
+      <th colspan="2">Actions</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+      <td colspan="1">
+        <a href="{{ path('app_book_show', { id: book.id })}}">{{ book.title }}</a>
+      </td>
+      <td colspan="1">
+        <a href="#">{{ book.author }}</a>
+      </td>
+      <td colspan="1">
+        <a href="#">{{book.dateEdition | date('d/m/Y')}}</a>
+      </td>
+      <td colspan="1">{{ book.updateAt | date('d/m/Y')}}</td>
+      <td colspan="1">
+        <a href="{{ path('app_book_delete', { id: book.id })}}" class="delete">
+          Delete
+        </a>
+      </td>
+      <td colspan="1">
+        <a href="{{ path('app_book_show', { id: book.id })}}" class="edit">Edit</a>
+      </td>
+    </tr>
 
-    <div class="content">
-    <a href="{{ path('app_books_add') }}"
-      ><div class="buttonadd">
-        Ajouter un livre</div
-    ></a>
-  </div>
-  <div class="content">
-    <table>
-      <tr>
-        <th colspan="1">Titre</th>
-        <th colspan="1">Auteur</th>
-        <th colspan="1">Date d'édition</th>
-        <th colspan="1">Dernière modification</th>
-        <th colspan="2">Actions</th>
-      </tr>
-      {% for book in books %}
-      <tr>
-        <td colspan="1">
-          <a href="{{ path('app_book_show', { id: book.id })}}">{{ book.title }}</a>
-        </td>
-        <td colspan="1">
-          <a href="#">{{ book.author }}</a>
-        </td>
-        <th colspan="1">
-          <a href="#">{{book.dateEdition | date('d/m/Y')}}</a>
-        </th>
-        <th colspan="1">{{ book.updateAt | date('d/m/Y')}}</th>
-        <td>
-          <a href="#">
-            <div class="delete"><i class="fa-sharp fa-solid fa-trash"></i></div
-          ></a>
-        </td>
-        <td>
-          <div class="edit"><i class="fa-sharp fa-solid fa-pen"></i></div>
-        </td>
-      </tr>
-
-      {%endfor%}
-    </table>
-  </div>
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/TP/NAZAR_Test-Technique/src/Controller/BooksController.php'|file_link(0) }}">src/Controller/BooksController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/TP/NAZAR_Test-Technique/templates/books/index.html.twig'|file_link(0) }}">templates/books/index.html.twig</a></code></li>
-    </ul>
+    {%endfor%}
+  </table>
 </div>
 {% endblock %}
