@@ -1,16 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BooksController!{% endblock %}
+{% block title %}Liste des livres{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container--form">
+    <h2>Liste des livres</h2>
 
+    <div class="content">
+    <a href="{{ path('app_books_add') }}"
+      ><div class="buttonadd">
+        Ajouter un livre</div
+    ></a>
+  </div>
+  <div class="content">
+    <table>
+      <tr>
+        <th colspan="1">Titre</th>
+        <th colspan="1">Auteur</th>
+        <th colspan="1">Date d'édition</th>
+        <th colspan="1">Dernière modification</th>
+        <th colspan="2">Actions</th>
+      </tr>
+      {% for book in books %}
+      <tr>
+        <td colspan="1">
+          <a href="#">{{ book.title }}</a>
+        </td>
+        <td colspan="1">
+          <a href="#">{{ book.author }}</a>
+        </td>
+        <th colspan="1">
+          <a href="#">{{book.dateEdition | date('d/m/Y')}}</a>
+        </th>
+        <th colspan="1">{{ book.dateUpdate | date('d/m/Y')}}</th>
+        <td>
+          <a href="#">
+            <div class="delete"><i class="fa-sharp fa-solid fa-trash"></i></div
+          ></a>
+        </td>
+        <td>
+          <div class="edit"><i class="fa-sharp fa-solid fa-pen"></i></div>
+        </td>
+      </tr>
+
+      {%endfor%}
+    </table>
+  </div>
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ '/var/www/html/TP/NAZAR_Test-Technique/src/Controller/BooksController.php'|file_link(0) }}">src/Controller/BooksController.php</a></code></li>

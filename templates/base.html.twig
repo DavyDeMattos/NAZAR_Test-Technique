@@ -16,10 +16,8 @@
             <nav class="menu">
                 <a href="{{ path('app_homepage') }}">Accueil</a>
                 {# {%if app.user%} #}
-                <a href="#">Liste des Livres</a>
-                <a href="#">Ajouter un livre</a>
-                <a href="#"><i class="fa-solid fa-door-open"></i></a>
-                <a href="#"></a>
+                <a href="{{ path('app_books_index') }}">Liste des Livres</a>
+                <a href="{{ path('app_books_add') }}">Ajouter un livre</a>
                 {# {%else%} #}
                 <a href="#">Connexion</a>
                 <a href="#">Inscription</a>
