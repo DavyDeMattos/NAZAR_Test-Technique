@@ -39,12 +39,11 @@ class BooksController extends AbstractController
             $book = new Books();
         }
         
-
         $form = $this->createForm(BookType::class, $book);
-
-        $form->handleRequest($request);
         
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            dump('coucou');
             if(!$book->getId()){
                 $book->setCreatedAt(new \DateTime());
             }else{
@@ -57,6 +56,7 @@ class BooksController extends AbstractController
             return $this->redirectToRoute('app_book_show', ['id' => $book->getId()]);
 
         };
+        // dd($book);
         return $this->render('books/createBook.html.twig', [
             'form' => $form->createView(),
             // Bouléen, si ($book->getId() !== null) alors il existe, et EditMode sera true

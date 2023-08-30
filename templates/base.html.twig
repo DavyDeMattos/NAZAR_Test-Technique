@@ -15,13 +15,14 @@
         <header>
             <nav class="menu">
                 <a href="{{ path('app_homepage') }}">Accueil</a>
-                {# {%if app.user%} #}
+                {%if app.user%}
                 <a href="{{ path('app_books_index') }}">Liste des Livres</a>
                 <a href="{{ path('app_books_add') }}">Ajouter un livre</a>
-                {# {%else%} #}
-                <a href="#">Connexion</a>
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+                {%else%}
+                <a href="{{ path('app_login') }}">Connexion</a>
                 <a href="#">Inscription</a>
-                {# {%endif%} #}
+                {%endif%}
                 </nav>
         </header>
         <main>

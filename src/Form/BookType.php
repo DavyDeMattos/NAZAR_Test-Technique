@@ -26,10 +26,11 @@ class BookType extends AbstractType
         'required' => true,
         'widget' => 'single_text',
         'input' => 'datetime',
+      ])
+      // Pas de dynamisation du bouton pour le moment
+      ->add('submit', SubmitType::class, [
+          'label' => 'Ajout/Edition d\'un Livre',
       ]);
-      // ->add('submit', SubmitType::class, [
-      //     'label' => 'Ajout d\'un Livre',
-      // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
