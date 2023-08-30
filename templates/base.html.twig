@@ -18,10 +18,12 @@
                 {%if app.user%}
                 <a href="{{ path('app_books_index') }}">Liste des Livres</a>
                 <a href="{{ path('app_books_add') }}">Ajouter un livre</a>
-                <a href="{{ path('app_logout') }}">Déconnexion</a>
-                {%else%}
-                <a href="{{ path('app_login') }}">Connexion</a>
-                <a href="#">Inscription</a>
+                <div>
+                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    {%else%}
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                    <a href="#">Inscription</a>
+                </div>
                 {%endif%}
                 </nav>
         </header>

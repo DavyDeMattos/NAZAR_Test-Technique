@@ -10,7 +10,11 @@ body{
   align-items: center;
   padding: 1rem;
   width: auto;
+  background-image: url("https://upload.epagine.fr/2661/uploads/img_1_presentation_librairie_delamain.jpg");
+  background-size: cover;
+  background-position: center;
 }
+
 
 nav.menu{
   background-color: #fff;
@@ -20,6 +24,12 @@ nav.menu{
   width: 100%;
   left: -5px;
   top: -5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+a, a:active, a:visited {
+  text-decoration: none;
 }
 
 main{
@@ -27,8 +37,16 @@ main{
   position: relative;
   width: 95%;
   top: 5rem;
+  /* font-size: xx-large; */
 }
 
+.form--login{
+  padding: 2rem;
+}
+.form--login input,.form--login button{
+  padding: 0.4rem;
+  margin-left: 0.5rem;
+}
 .container{
   text-align: left;
   padding: 0 15%;
@@ -55,11 +73,11 @@ tr{
 }
 
 .delete{
-  left: 1.5rem;
+  left: .5rem;
   position: relative;
 }
 
 .edit{
-  right: 1.5rem;
+  right: .5rem;
   position: relative;
 }
